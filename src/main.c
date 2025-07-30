@@ -122,7 +122,21 @@ static void configure_simulator(int argc, char **argv)
         }
     }
 }
+#if LV_USE_SDL //simulator LVGL
+static void lv_linux_disp_init(void)
+{
+    const int width = atoi(getenv("LV_SDL_VIDEO_WIDTH") ? : "480"); //320
+    const int height = atoi(getenv("LV_SDL_VIDEO_HEIGHT") ? : "480"); //240
 
+    lv_sdl_window_create(width, height);
+}
+
+static void lv_linux_indev_init(void)
+{
+    lv_sdl_mouse_create();
+}
+
+#endif
 /**
  * @brief entry point
  * @description start a demo
@@ -131,17 +145,22 @@ static void configure_simulator(int argc, char **argv)
  */
 int main(int argc, char **argv)
 {
-
+    //注册显示后端
     configure_simulator(argc, argv);
 
     /* Initialize LVGL. */
     lv_init();
+
+    //lv_linux_disp_init();
+
+    
 
     /* Initialize the configured backend */
     if (driver_backends_init_backend(selected_backend) == -1) {
         die("Failed to initialize display backend");
     }
 
+    lv_linux_indev_init();
     /* Enable for EVDEV support */
 #if LV_USE_EVDEV
     if (driver_backends_init_backend("EVDEV") == -1) {
@@ -149,9 +168,10 @@ int main(int argc, char **argv)
     }
 #endif
 
+
     /*Create a Demo*/
     lv_demo_widgets();
-    lv_demo_widgets_start_slideshow();
+    //lv_demo_widgets_start_slideshow();
 
     /* Enter the run loop of the selected backend */
     driver_backends_run_loop();

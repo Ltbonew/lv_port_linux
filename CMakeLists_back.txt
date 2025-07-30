@@ -21,6 +21,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic")
 set(LV_BUILD_SET_CONFIG_OPTS ON CACHE BOOL
     "create CMAKE variables from lv_conf_internal.h" FORCE)
 
+message("Including Linux support")
 add_subdirectory(lvgl)
 
 if (CONFIG_LV_USE_EVDEV)

@@ -851,7 +851,7 @@
 #define LV_USE_FS_STDIO 1
 #if LV_USE_FS_STDIO
     #define LV_FS_STDIO_LETTER 'A'
-    #define LV_FS_STDIO_PATH ""         /**< Set the working directory. File/directory paths will be appended to it. */
+    #define LV_FS_STDIO_PATH "/home/jianbohe/share/learning/"         /**< Set the working directory. File/directory paths will be appended to it. */
     #define LV_FS_STDIO_CACHE_SIZE 0    /**< >0 to cache this number of bytes in lv_fs_read() */
 #endif
 
@@ -916,7 +916,7 @@
 #define LV_USE_LODEPNG 1
 
 /** PNG decoder(libpng) library */
-#define LV_USE_LIBPNG 0
+#define LV_USE_LIBPNG 1
 
 /** BMP decoder library */
 #define LV_USE_BMP 1
@@ -1182,7 +1182,7 @@
  *==================*/
 
 /** Use SDL to open window on PC and handle mouse and keyboard. */
-#define LV_USE_SDL              0
+#define LV_USE_SDL              1
 #if LV_USE_SDL
     #define LV_SDL_INCLUDE_PATH     <SDL2/SDL.h>
     #define LV_SDL_RENDER_MODE      LV_DISPLAY_RENDER_MODE_DIRECT   /**< LV_DISPLAY_RENDER_MODE_DIRECT is recommended for best performance */
@@ -1216,7 +1216,7 @@
 #endif
 
 /** Driver for /dev/fb */
-#define LV_USE_LINUX_FBDEV      1
+#define LV_USE_LINUX_FBDEV      0
 #if LV_USE_LINUX_FBDEV
     #define LV_LINUX_FBDEV_BSD           0
     #define LV_LINUX_FBDEV_RENDER_MODE   LV_DISPLAY_RENDER_MODE_PARTIAL
@@ -1344,7 +1344,7 @@
 *======================*/
 
 /** Enable examples to be built with the library. */
-#define LV_BUILD_EXAMPLES 1
+#define LV_BUILD_EXAMPLES 0
 
 /** Build the demos */
 #define LV_BUILD_DEMOS 1
